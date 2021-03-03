@@ -6,6 +6,11 @@ RUN apt update && apt-get -y install nginx nginx-full certbot
 COPY gunicorn_conf.py /
 COPY start.sh /
 COPY start-reload.sh /
+
+RUN chmod +x /start-reload.sh
+RUN chmod +x /start.sh
+RUN chmod +x /gunicorn_conf.py
+
 COPY nginx.conf /etc/nginx
 
 RUN mkdir /var/run/gunicorn
